@@ -1,0 +1,8 @@
+coords_west: -3.33
+coords_east: 1.25
+coords_north: 52.56
+coords_south: 50.98
+dataSet: "COPERNICUS/S2_SR_HARMONIZED"
+funcName: "ndvi"
+outFileName: "COPERNICUS-S2_SR_HARMONIZED_ndvi_applied"
+tempExt: ["2017-06-01", "2017-07-01"]
