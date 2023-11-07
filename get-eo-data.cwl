@@ -1,10 +1,11 @@
 cwlVersion: v1.2
+s:softwareVersion: 0.1.2
 
 $graph:
   - class: Workflow
     id: "run_openeo"
-    doc: Gathers specified EO data form GEE and applies ndvi process
-
+    doc: Gathers specified EO data from GEE and applies ndvi process
+    label: run OpenEO on Google Earth Engine backend
     inputs:
       dataSet:
         type: string
