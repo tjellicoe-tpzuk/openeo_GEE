@@ -16,3 +16,4 @@ The next step is to integrate this with an EOEPCA application package so that th
 ## Other links
 More information about the GEE backend for OpenEO can be found on the GitHub for that project - https://github.com/Open-EO/openeo-earthengine-driver
 More information on the OpenEO Python Client can be found here - https://openeo.org/documentation/1.0/python/#installation
+Install helm - `brew install helm`
