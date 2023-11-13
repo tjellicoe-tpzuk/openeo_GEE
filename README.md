@@ -7,10 +7,8 @@ A process graph is constructed using the GEE backend and this is then processed 
 
 ## How to use this application
 The application is run using a CWL Runner while passing in the required inputs. The inpuy.yml file is provided as an example input and this will set up the application to request data from the Sentinel 2 data available via the Google Earth Engine Data Catalog -  https://developers.google.com/earth-engine/datasets/catalog
-To run this application use a cwl runner (e.g. cwltool) and call the get-eo-data.cwl file with the inputs as specified in the input.yml file:
-'cwltool get-eo-data.cwl input.yml'
-Or if you are using a different yml file:
-'<your_cwl_runner> get-eo-data.cwl <your_yml_file.yml>'
+To run this application use a cwl runner (e.g. cwltool) and call the get-eo-data.cwl file with the inputs as specified in the input.yml file - 'cwltool get-eo-data.cwl input.yml'
+Or if you are using a different yml file - '<your_cwl_runner> get-eo-data.cwl <your_yml_file.yml>'
 
 ## Further work on this project
 The next step is to integrate this with an EOEPCA application package so that this can be run via the ADES allowing for further integration between the two applications
