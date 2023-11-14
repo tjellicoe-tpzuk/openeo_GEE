@@ -8,7 +8,7 @@ A process graph is constructed using the GEE backend and this is then processed 
 ## How to use this application
 The application is run using a CWL Runner while passing in the required inputs. The inpuy.yml file is provided as an example input and this will set up the application to request data from the Sentinel 2 data available via the [Google Earth Engine Data Catalog](https://developers.google.com/earth-engine/datasets/catalog)
 As the cwl script relies on Docker container to run the command, first build the container from the image contained in this repo by running:
-`docker compose build'
+`docker compose build`
 To run this application use a cwl runner (e.g. cwltool) and call the get-eo-data.cwl file with the inputs as specified in the `input.yml` file:
 `cwltool get-eo-data.cwl input.yml`
 Or in a more general format:
