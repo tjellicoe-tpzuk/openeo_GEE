@@ -139,8 +139,6 @@ def createStacCatalogRoot(outName) :
 
 
 if __name__ == "__main__":
-    print(sys.argv)
-    print(sys.argv[8])
     if testing:
         dataSet = "COPERNICUS/S2_SR_HARMONIZED"
         funcName = "ndvi"
