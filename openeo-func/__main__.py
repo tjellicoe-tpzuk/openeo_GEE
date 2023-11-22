@@ -5,14 +5,21 @@ from openeo.internal.graph_building import PGNode
 import sys
 from time import sleep
 import math
+import os
+import time
+import mimetypes
+import datetime as dt
 
+out_dir = os.getcwd()
 
 ## this script will take as an input a dataset name for EO data available via Google Earth Engine (https://developers.google.com/earth-engine/datasets/catalog), 
 ## which it will them compute some complex process using OpenEO in-build processes and return the output STAC catelogue item
 
 testing = False #True
 
-def main(dataName: str, funcName: str, coords: dict, tempExt: [str], outFileName: str):
+def main(dataName: str, funcName: str, coords: dict, tempExt: [str], outFileName: str="output_file"):
+
+    outName = outFileName
 
     print("HERE")
     connection = openeo.connect("https://earthengine.openeo.org")
@@ -45,11 +52,95 @@ def main(dataName: str, funcName: str, coords: dict, tempExt: [str], outFileName
     datacube = datacube.save_result(format="GTIFF-THUMB")
     job = datacube.create_job()
     outputResults = job.start_and_wait()
-    outputResults.download_results(f"output_files.tif")
+    outputResults.download_results(f"{out_dir}/{outName}.tif")
+    createStac(outName)
     print("To see your results open https://hub.openeo.org/")
 
-if __name__ == "__main__":
+    
 
+
+## This needs to be created correctly in future
+def createStac(outName):
+    createStacItem(outName)
+    createStacCatalogRoot(outName)
+
+def createStacItem(outName) :
+    now = time.time_ns()/1_000_000_000
+    dateNow = dt.datetime.fromtimestamp(now)
+    dateNow = dateNow.strftime('%Y-%m-%dT%H:%M:%S.%f') + "Z"
+    size = os.path.getsize(f"{out_dir}/{outName}.tif")
+    mime = mimetypes.guess_type(f"{out_dir}/{outName}.tif")[0]
+    data = {"stac_version": "1.0.0",
+  "id": f"{outName}-{now}",
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-180, -90],
+        [-180, 90],
+        [180, 90],
+        [180, -90],
+        [-180, -90]
+      ]
+    ]
+  },
+  "properties": {
+    "created": f"{dateNow}",
+    "datetime": f"{dateNow}",
+    "updated": f"{dateNow}"
+  },
+  "bbox": [-180, -90, 180, 90],
+  "assets": {
+    f"{outName}": {
+      "type": f"{mime}",
+      "roles": ["data"],
+      "href": f"{outName}.tif",
+      "file:size": size
+    }
+    },
+  "links": [{
+    "type": "application/json",
+    "rel": "parent",
+    "href": "catalog.json"
+  }, {
+    "type": "application/geo+json",
+    "rel": "self",
+    "href": f"{outName}.json"
+  }, {
+    "type": "application/json",
+    "rel": "root",
+    "href": "catalog.json"
+  }]
+}
+    with open(f'{out_dir}/{outName}.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    print("created")
+
+
+def createStacCatalogRoot(outName) :
+    data = {
+  "stac_version": "1.0.0",
+  "id": "catalog",
+  "type": "Catalog",
+  "description": "Root catalog",
+  "links": [{
+    "type": "application/geo+json",
+    "rel": "item",
+    "href": f"{outName}.json"
+  }, {
+    "type": "application/json",
+    "rel": "self",
+    "href": "catalog.json"
+  }]
+}
+    with open(f'{out_dir}/catalog.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+
+if __name__ == "__main__":
+    print(sys.argv)
+    print(sys.argv[8])
     if testing:
         dataSet = "COPERNICUS/S2_SR_HARMONIZED"
         funcName = "ndvi"
@@ -60,7 +151,7 @@ if __name__ == "__main__":
             "south" : 50.98
         }
         tempExt = ["2017-06-01", "2017-07-01"]
-        outFileName = "COPERNICUS/S2_SR_HARMONIZED_".replace("/","-") + funcName + "_applied.tiff"
+        outFileName = f"{dataSet}_".replace("/","-") + funcName + "_applied.tiff"
     else:
         args = sys.argv
         dataSet = args[1]
@@ -73,6 +164,6 @@ if __name__ == "__main__":
             "south" : float(args[n+1])
         }
         tempExt = [args[7], args[8]]
-        outFileName = "test"
+        outFileName = args[9]
     
     main(dataSet, funcName, coords, tempExt, outFileName)
