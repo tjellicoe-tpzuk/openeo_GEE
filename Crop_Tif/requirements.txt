@@ -1,0 +1,6 @@
+pillow
+numpy
+gdal==3.2.2.1
+rasterio
+affine
+datetime

@@ -1,0 +1,18 @@
+{
+    "stac_version": "1.0.0",
+    "id": "catalog",
+    "type": "Catalog",
+    "description": "Root catalog",
+    "links": [
+        {
+            "type": "application/geo+json",
+            "rel": "item",
+            "href": "output_files_invert.json"
+        },
+        {
+            "type": "application/json",
+            "rel": "self",
+            "href": "catalog.json"
+        }
+    ]
+}
