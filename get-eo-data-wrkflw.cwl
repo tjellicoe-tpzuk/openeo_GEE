@@ -105,6 +105,6 @@ $graph:
     requirements:
       DockerRequirement:
         dockerPull: tjellicoetpzuk/openeo:latest
-      NetworkAccess:
-        networkAccess: true
+      #NetworkAccess:
+      #  networkAccess: true
         
