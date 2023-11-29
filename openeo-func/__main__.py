@@ -15,7 +15,7 @@ out_dir = os.getcwd()
 ## this script will take as an input a dataset name for EO data available via Google Earth Engine (https://developers.google.com/earth-engine/datasets/catalog), 
 ## which it will them compute some complex process using OpenEO in-build processes and return the output STAC catelogue item
 
-testing = False #True
+testing = True
 
 def main(dataName: str, funcName: str, coords: dict, tempExt: [str], outFileName: str="output_file"):
 
@@ -57,8 +57,6 @@ def main(dataName: str, funcName: str, coords: dict, tempExt: [str], outFileName
     print("To see your results open https://hub.openeo.org/")
 
     
-
-
 ## This needs to be created correctly in future
 def createStac(outName):
     createStacItem(outName)
@@ -68,8 +66,8 @@ def createStacItem(outName) :
     now = time.time_ns()/1_000_000_000
     dateNow = dt.datetime.fromtimestamp(now)
     dateNow = dateNow.strftime('%Y-%m-%dT%H:%M:%S.%f') + "Z"
-    size = os.path.getsize(f"{out_dir}/{outName}.tif")
-    mime = mimetypes.guess_type(f"{out_dir}/{outName}.tif")[0]
+    size = os.path.getsize(f"{outName}.tif")
+    mime = mimetypes.guess_type(f"{outName}.tif")[0]
     data = {"stac_version": "1.0.0",
   "id": f"{outName}-{now}",
   "type": "Feature",
