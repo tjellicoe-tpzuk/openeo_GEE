@@ -1,4 +1,8 @@
-cwlVersion: v1.2
+cwlVersion: v1.0
+$namespaces:
+  s: https://schema.org/
+schemas:
+  - http://schema.org/version/9.0/schemaorg-current-http.rdf
 s:softwareVersion: 0.1.2
 
 $graph:
@@ -50,7 +54,7 @@ $graph:
   - class: CommandLineTool
     id: get_data
     #main(dataSet, funcName, coords, tempExt, outFileName)
-    #baseCommand: ["python", "-m", "openeo-func"]
+    baseCommand: ["python", "-m", "openeo-func"]
     inputs:
       dataSet:
         type: string
