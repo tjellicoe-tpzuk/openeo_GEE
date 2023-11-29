@@ -1,0 +1,7 @@
+dataSet: "COPERNICUS/S2_SR_HARMONIZED"
+tempExt: ["2017-06-01", "2017-07-01"]
+coords_west: -3.33
+coords_east: 1.25
+coords_north: 52.56
+coords_south: 50.98
+s_expression: "ndvi:(/ (- B05 B03) (+ B05 B03))"
