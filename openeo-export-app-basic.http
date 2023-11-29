@@ -49,7 +49,7 @@ Content-Type: application/json
 
 {
   "executionUnit": {
-    "href": "https://raw.githubusercontent.com/tjellicoe-tpzuk/openeo_GEE/main/get-eo-data-wrkflw.cwl",
+    "href": "https://raw.githubusercontent.com/tjellicoe-tpzuk/openeo_GEE/main/get-eo-data-wrkflw-basic.cwl",
     "type": "application/cwl"
   }
 }
@@ -77,31 +77,16 @@ Accept: application/json
 
 ###
 
-# @name deleteProcess
-DELETE https://{{ades}}/{{user}}/wps3/processes/run_openeo-0_1_2 HTTP/1.1
-Authorization: Bearer {{idToken}}
-Accept: application/json
-###
-
 # @name executeProcess
-POST https://{{ades}}/{{user}}/wps3/processes/run_openeo-0_1_2/execution HTTP/1.1
+POST https://{{ades}}/{{user}}/wps3/processes/run_openeo-1_0/execution HTTP/1.1
 #Authorization: Bearer {{idToken}}
 Accept: application/json
 Content-Type: application/json
 Prefer: respond-async
 
 {
-  "inputs": {
-    "coords_west": -3.33,
-    "coords_east": 1.25,
-    "coords_north": 52.56,
-    "coords_south": 50.98,
-    "dataSet": "COPERNICUS/S2_SR_HARMONIZED",
-    "funcName": "ndvi",
-    "outFileName": "COPERNICUS-S2_SR_HARMONIZED_ndvi_applied",
-    "tempExt": ["2017-06-01", "2017-07-01"]
-},
-"response":"raw"
+  "inputs": {},
+  "response":"raw"
 }
 
 ###
