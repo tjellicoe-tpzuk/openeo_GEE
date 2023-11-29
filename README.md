@@ -18,8 +18,8 @@ You can also provide the inputs on the command line itself (DO NOT USE, for exam
 
 ## Further work on this project
 The next step is to integrate this with an EOEPCA application package so that this can be run via the ADES allowing for further integration between the two applications.
-The get-eo-data-wrkflw.cwl scriiiiiiiipt is now functional and works when run within an EOEPCA application package, producing the desired outputs. An additional piece of work has been conducted to create a two step process, with the first extracting EO data from openEO (GEE) and the second making of the s_expression functionality to compute the ndvi on this data. This serves as a demonstration for integrating EOEPCA and openEO processing. However, this script is not yet functional, I believe due to issues with STAC output from openEO which needs to be resolved.
-However, the openeo-download-ndvi.cwl script can be run as a proof of concept, although only the first stage will be successful.
+The `get-eo-data-wrkflw.cwl` script is now functional and works when run within an EOEPCA application package, producing the desired outputs. An additional piece of work has been conducted to create a two step process, with the first extracting EO data from openEO (GEE) and the second making of the s_expression functionality to compute the ndvi on this data. This serves as a demonstration for integrating EOEPCA and openEO processing. However, this script is not yet functional, I believe due to issues with STAC output from openEO which needs to be resolved.
+However, the `openeo-download-ndvi.cwl` script can be run as a proof of concept, although only the first stage will be successful.
 
 ## Other links
 More information about the GEE backend for OpenEO can be found on the [GitHub for that project](https://github.com/Open-EO/openeo-earthengine-driver)
