@@ -14,7 +14,7 @@ To run this application use a cwl runner (e.g. cwltool) and call the get-eo-data
 Or in a more general format:
 `<your_cwl_runner> get-eo-data.cwl <your_yml_file.yml>`
 You can also provide the inputs on the command line itself (DO NOT USE, for example only):
-`cwltool get-eo-data.cwl --coords_west -3.33 --coords_east 1.25 --coords_north 52.56 --coords_south 50.98 --dataSet "COPERNICUS/S2_SR_HARMONIZED" --funcName "ndvi" --outFileName "COPERNICUS-S2_SR_HARMONIZED_ndvi_applied" --tempExt "2017-06-01","2017-07-01"` - **note, this currently doesn't work as the final string element is passed incorrectly into the Python script**
+`cwltool get-eo-data.cwl#run_openeo --coords_west -3.33 --coords_east 1.25 --coords_north 52.56 --coords_south 50.98 --dataSet "COPERNICUS/S2_SR_HARMONIZED" --funcName "ndvi" --outFileName "COPERNICUS-S2_SR_HARMONIZED_ndvi_applied" --tempExt "2017-06-01","2017-07-01"`
 
 ## Further work on this project
 The next step is to integrate this with an EOEPCA application package so that this can be run via the ADES allowing for further integration between the two applications.
