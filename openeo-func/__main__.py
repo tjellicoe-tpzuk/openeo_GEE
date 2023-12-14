@@ -15,7 +15,7 @@ out_dir = os.getcwd()
 ## this script will take as an input a dataset name for EO data available via Google Earth Engine (https://developers.google.com/earth-engine/datasets/catalog), 
 ## which it will them compute some complex process using OpenEO in-build processes and return the output STAC catelogue item
 
-testing = True
+testing = False #True
 
 def main(dataName: str, funcName: str, coords: dict, tempExt: [str], outFileName: str="output_file"):
 

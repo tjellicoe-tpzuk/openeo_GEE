@@ -89,7 +89,8 @@ $graph:
           position: 7
       outFileName:
         type: string
-
+        inputBinding:
+          position: 8
     outputs:
       outs:
         type: Directory

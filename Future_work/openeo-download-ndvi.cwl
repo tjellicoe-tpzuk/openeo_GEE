@@ -3,7 +3,7 @@ s:softwareVersion: 0.1.2
 
 $graph:
   - class: Workflow
-    id: run_openeo
+    id: download_and_run_ndvi
     doc: Gathers specified EO data from GEE and then uses previous s_expression cwl tool to apply ndvi processing
     label: run OpenEO on Google Earth Engine backend to extract data and then compute ndvi
     requirements:
