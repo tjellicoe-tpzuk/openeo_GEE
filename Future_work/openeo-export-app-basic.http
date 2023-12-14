@@ -71,14 +71,14 @@ Accept: application/json
 ###
 
 # @name deleteProcess
-DELETE https://{{ades}}/{{user}}/wps3/processes/run_openeo-1_0 HTTP/1.1
+DELETE https://{{ades}}/{{user}}/wps3/processes/run_openeo-0_1_2 HTTP/1.1
 Authorization: Bearer {{idToken}}
 Accept: application/json
 
 ###
 
 # @name executeProcess
-POST https://{{ades}}/{{user}}/wps3/processes/run_openeo-1_0/execution HTTP/1.1
+POST https://{{ades}}/{{user}}/wps3/processes/run_openeo-0_1_2/execution HTTP/1.1
 #Authorization: Bearer {{idToken}}
 Accept: application/json
 Content-Type: application/json
