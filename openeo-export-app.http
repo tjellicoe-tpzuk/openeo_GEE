@@ -4,13 +4,6 @@
 @login = auth.{{domain}}
 @user = eric
 @pass = defaultPWD
-@clientId = 6195909b-04bc-4d8c-8b92-9cb4e1bdea1f
-@clientSecret = 9a614fe9-b1eb-465d-a0af-85115dcba2e6
-
-@gitToken_1 = "GHSAT0AAAAAACJYPYJUOHTSODRCUIBE2MH4ZKJC2CA"
-@link_1 = "https://raw.githubusercontent.com/tjellicoe-tpzuk/openeo_GEE/main/get-eo-data.cwl?token="
-@gitToken_2 = "GHSAT0AAAAAACJYPYJUKSVX4IZ7NM4XSESOZKJC37Q"
-@link_2 = "https://raw.githubusercontent.com/tjellicoe-tpzuk/openeo_GEE/main/input.yml?token="
 
 @tokenEndpoint = {{openidConfiguration.response.body.token_endpoint}}
 @idToken = {{authenticate.response.body.id_token}}
